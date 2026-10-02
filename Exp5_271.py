@@ -18,3 +18,12 @@ new_customer = [[75, 85]]
 # Predict the group of the new customer
 group = model.predict(new_customer)[0]
 print("\nThis customer belongs to group:", group)
+import matplotlib.pyplot as plt          # the charting library
+
+x = data["Annual Income (k$)"]                 # income column
+y = data["Spending Score (1-100)"]             # spending column
+plt.scatter(x, y, c=model.labels_, cmap="tab10", s=30)  # colour each dot by its group
+cen = model.cluster_centers_                   # the 5 group centres
+plt.scatter(cen[:,0], cen[:,1], marker="X", s=200, c="black")  # mark the centres
+plt.xlabel("income (k$)"); plt.ylabel("spending score")
+plt.title("5 customer groups"); plt.show()
