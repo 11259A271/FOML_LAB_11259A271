@@ -30,9 +30,14 @@ model = GradientBoostingClassifier(random_state=1)
 # Train
 model.fit(X_train, y_train)
 
-# Test
+# Test accuracy
 print("Accuracy:", round(model.score(X_test, y_test), 3))
-new_patient = [X_test.iloc[0]]                           # one new patient's test results
-result = model.predict(new_patient)[0]                   # predict (1 or 0)
-print("Heart disease? (1=yes, 0=no):", result) 
+
+# Select one patient while keeping the column names
+new_patient = X_test.iloc[[0]]
+
+# Predict
+result = model.predict(new_patient)[0]
+
+print("Heart disease? (1=yes, 0=no):", result)
 
