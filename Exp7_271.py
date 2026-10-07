@@ -22,5 +22,13 @@ names = data.target_names
 new_tumour = X_test[0]
 result = forest.predict(new_tumour.reshape(1, -1))[0]
 print("Diagnosis: ", names[result])
+import matplotlib.pyplot as plt          # the charting library
 
+importances = model.feature_importances_       # how useful each feature was
+names = data.feature_names
+top = sorted(zip(importances, names), reverse=True)[:5]  # keep the top 5
+vals = [t[0] for t in top]; labs = [t[1] for t in top]
+plt.barh(labs[::-1], vals[::-1], color="#2F49D1")  # horizontal bars
+plt.xlabel("importance"); plt.title("Top 5 features")
+plt.show()
 
