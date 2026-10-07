@@ -22,5 +22,5 @@ names = data.target_names
 new_tumour = X_test[0]
 result = forest.predict(new_tumour.reshape(1, -1))[0]
 print("Diagnosis: ", names[result])
-result = forest.predict(new_tumour.reshape(1, -1))[0]
+
 
